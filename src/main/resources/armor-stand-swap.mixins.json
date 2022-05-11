@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.mrmelon54.armorstandswap.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ArmorStandInteractionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

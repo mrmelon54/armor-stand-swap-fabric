@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "armor-stand-swap",
+  "version": "${version}",
+  "name": "Armor Stand Swap",
+  "description": "Tweaks armor stands to make them a bit more usable",
+  "authors": [
+    "MrMelon54",
+    "Draylar"
+  ],
+  "contact": {
+    "homepage": "https://minecraft.mrmelon54.xyz/mods/armorstandswap",
+    "sources": "https://github.com/MrMelon54/armor-stand-swap"
+  },
+  "license": "MIT",
+  "icon": "assets/armor-stand-swap/icon.png",
+  "environment": "*",
+  "entrypoints": {},
+  "mixins": [
+    "armor-stand-swap.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.x"
+  }
+}
