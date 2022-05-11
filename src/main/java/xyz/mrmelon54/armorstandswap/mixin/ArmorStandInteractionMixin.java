@@ -50,10 +50,8 @@ public abstract class ArmorStandInteractionMixin extends Entity {
         ItemStack heldStack = player.getMainHandStack();
         Item heldStackItem = heldStack.getItem();
 
-        if (this.isInvisible()) {
-            info.setReturnValue(ActionResult.FAIL);
-            return;
-        }
+        // Ignore invisible armor stands
+        if (this.isInvisible()) return;
         if (player.isSneaking() && hand == Hand.OFF_HAND) {
             info.setReturnValue(ActionResult.FAIL);
             return;
