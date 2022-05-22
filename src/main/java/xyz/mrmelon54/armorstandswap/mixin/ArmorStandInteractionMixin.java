@@ -1,5 +1,6 @@
 package xyz.mrmelon54.armorstandswap.mixin;
 
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.EulerAngle;
 import net.minecraft.world.World;
@@ -20,6 +21,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.function.BiConsumer;
 
 @Mixin(ArmorStandEntity.class)
 public abstract class ArmorStandInteractionMixin extends Entity {
@@ -86,20 +89,11 @@ public abstract class ArmorStandInteractionMixin extends Entity {
                     player.getEquippedStack(EquipmentSlot.OFFHAND)
             );
 
-            setArmorAndTools(armorStandSet, player);
-            setArmorAndTools(playerSet, (ArmorStandEntity) (Object) this);
+            ArmorToolSet.checkArmorBinding(armorStandSet, playerSet);
+            armorStandSet.transfer(player);
+            playerSet.transfer((ArmorStandEntity) (Object) this);
 
             info.setReturnValue(ActionResult.FAIL);
         }
-    }
-
-    @Unique
-    private void setArmorAndTools(ArmorToolSet set, Entity entity) {
-        entity.equipStack(EquipmentSlot.HEAD, set.helmet());
-        entity.equipStack(EquipmentSlot.CHEST, set.chestplate());
-        entity.equipStack(EquipmentSlot.LEGS, set.leggings());
-        entity.equipStack(EquipmentSlot.FEET, set.boots());
-        entity.equipStack(EquipmentSlot.MAINHAND, set.mainHand());
-        entity.equipStack(EquipmentSlot.OFFHAND, set.offHand());
     }
 }
